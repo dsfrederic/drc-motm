@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "teams",
+  "info": {
+    "singularName": "team",
+    "pluralName": "teams",
+    "displayName": "Team",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "club": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::club.club"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "SEN I",
+        "SEN II",
+        "SEN III"
+      ]
+    },
+    "displayName": {
+      "type": "string"
+    }
+  }
+}
