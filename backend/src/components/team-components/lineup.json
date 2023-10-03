@@ -1,7 +1,8 @@
 {
   "collectionName": "components_team_lineups",
   "info": {
-    "displayName": "lineup"
+    "displayName": "lineup",
+    "description": ""
   },
   "options": {},
   "attributes": {

@@ -722,11 +722,11 @@ export interface ApiGameGame extends Schema.CollectionType {
     >;
     awayTeam: Attribute.Relation<
       'api::game.game',
-      'oneToOne',
+      'manyToOne',
       'api::team.team'
     >;
-    homeLineup: Attribute.Component<'team.lineup'>;
-    awayLineup: Attribute.Component<'team.lineup', true>;
+    homeLineup: Attribute.Component<'team-components.lineup'>;
+    awayLineup: Attribute.Component<'team-components.lineup'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -788,6 +788,7 @@ export interface ApiTeamTeam extends Schema.CollectionType {
     club: Attribute.Relation<'api::team.team', 'oneToOne', 'api::club.club'>;
     category: Attribute.Enumeration<['SEN I', 'SEN II', 'SEN III']>;
     displayName: Attribute.String;
+    games: Attribute.Relation<'api::team.team', 'oneToMany', 'api::game.game'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -1,0 +1,162 @@
+{
+    populate: {
+      awayTeam: {
+        fields: ['displayName']
+      },
+      homeTeam: {
+        fields: ['displayName']
+      },
+      homeLineup: {
+        populate:{
+                player01: {
+                    fields: ['firstName', 'lastName']
+                },
+                player02: {
+                    fields: ['firstName', 'lastName']
+                },
+                player03: {
+                    fields: ['firstName', 'lastName']
+                },
+                player04: {
+                    fields: ['firstName', 'lastName']
+                },
+                player05: {
+                    fields: ['firstName', 'lastName']
+                },
+                player06: {
+                    fields: ['firstName', 'lastName']
+                },
+                player07: {
+                    fields: ['firstName', 'lastName']
+                },
+                player08: {
+                    fields: ['firstName', 'lastName']
+                },
+                player09: {
+                    fields: ['firstName', 'lastName']
+                },
+                player10: {
+                    fields: ['firstName', 'lastName']
+                },
+                player11: {
+                    fields: ['firstName', 'lastName']
+                },
+                player12: {
+                    fields: ['firstName', 'lastName']
+                },
+                player13: {
+                    fields: ['firstName', 'lastName']
+                },
+                player14: {
+                    fields: ['firstName', 'lastName']
+                },
+                player15: {
+                    fields: ['firstName', 'lastName']
+                },
+                player16: {
+                    fields: ['firstName', 'lastName']
+                },
+                player17: {
+                    fields: ['firstName', 'lastName']
+                },
+                player18: {
+                    fields: ['firstName', 'lastName']
+                },
+                player19: {
+                    fields: ['firstName', 'lastName']
+                },
+                player20: {
+                    fields: ['firstName', 'lastName']
+                },
+                player21: {
+                    fields: ['firstName', 'lastName']
+                },
+                player22: {
+                    fields: ['firstName', 'lastName']
+                },
+                player23: {
+                    fields: ['firstName', 'lastName']
+                },
+                player24: {
+                    fields: ['firstName', 'lastName']
+                }
+            }
+      },
+      awayLineup: {
+        populate:{
+                player01: {
+                    fields: ['firstName', 'lastName']
+                },
+                player02: {
+                    fields: ['firstName', 'lastName']
+                },
+                player03: {
+                    fields: ['firstName', 'lastName']
+                },
+                player04: {
+                    fields: ['firstName', 'lastName']
+                },
+                player05: {
+                    fields: ['firstName', 'lastName']
+                },
+                player06: {
+                    fields: ['firstName', 'lastName']
+                },
+                player07: {
+                    fields: ['firstName', 'lastName']
+                },
+                player08: {
+                    fields: ['firstName', 'lastName']
+                },
+                player09: {
+                    fields: ['firstName', 'lastName']
+                },
+                player10: {
+                    fields: ['firstName', 'lastName']
+                },
+                player11: {
+                    fields: ['firstName', 'lastName']
+                },
+                player12: {
+                    fields: ['firstName', 'lastName']
+                },
+                player13: {
+                    fields: ['firstName', 'lastName']
+                },
+                player14: {
+                    fields: ['firstName', 'lastName']
+                },
+                player15: {
+                    fields: ['firstName', 'lastName']
+                },
+                player16: {
+                    fields: ['firstName', 'lastName']
+                },
+                player17: {
+                    fields: ['firstName', 'lastName']
+                },
+                player18: {
+                    fields: ['firstName', 'lastName']
+                },
+                player19: {
+                    fields: ['firstName', 'lastName']
+                },
+                player20: {
+                    fields: ['firstName', 'lastName']
+                },
+                player21: {
+                    fields: ['firstName', 'lastName']
+                },
+                player22: {
+                    fields: ['firstName', 'lastName']
+                },
+                player23: {
+                    fields: ['firstName', 'lastName']
+                },
+                player24: {
+                    fields: ['firstName', 'lastName']
+                }
+            }
+      }
+    }
+  }

@@ -28,18 +28,19 @@
     },
     "awayTeam": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::team.team"
+      "relation": "manyToOne",
+      "target": "api::team.team",
+      "inversedBy": "games"
     },
     "homeLineup": {
       "type": "component",
       "repeatable": false,
-      "component": "team.lineup"
+      "component": "team-components.lineup"
     },
     "awayLineup": {
       "type": "component",
-      "repeatable": true,
-      "component": "team.lineup"
+      "repeatable": false,
+      "component": "team-components.lineup"
     }
   }
 }
