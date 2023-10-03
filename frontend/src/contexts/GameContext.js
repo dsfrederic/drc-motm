@@ -1,9 +1,9 @@
 import React, { createContext } from 'react';
 
-const GameContext = createContext({ children });
+const GameContext = createContext();
 
 // create Pet Provider
-export const GameProvider = () => {
+export const GameProvider = ({ children }) => {
     const value = {};
     return (
         <GameContext.Provider value={value}>
