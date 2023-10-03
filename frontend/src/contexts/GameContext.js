@@ -11,15 +11,15 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
         const [nav_value, set_nav_value] = useState("GameList");
         const [gameId, setGameId] = useState("");
         
-        // add new pet
+        // add new game
         const createNewGame = async (data) => {
             await http.post("/api/games", data);
         };
-        // update a pet entry
+        // update a game entry
         const updateGame = async (gameId, data) => {
             await http.put(`/api/games/${gameId}`, data);
         };
-        // delete a pet entry
+        // delete a game entry
         const deleteGame = async (gameId) => {
             await http.delete(`/api/games/${gameId}`);
         };
@@ -27,18 +27,18 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
         const changeNavValue = (value) => {
             set_nav_value(value);
         };
-        // get pet id value
+        // get game id value
         const getGameId = (id) => {
             setGameId(id);
         };
     
         useEffect(()=>{
-            const readAllPets = async () => {
+            const readAllGames = async () => {
                 const response = await http.get("/api/games");
                 const responseArr = Object.values(response.data.data);
                 setGames(responseArr);
             };
-            return readAllPets;
+            return readAllGames;
         }, []);
     
         const value = {
