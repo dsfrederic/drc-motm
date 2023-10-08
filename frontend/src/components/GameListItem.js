@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-    
+
 // mui components
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -17,14 +17,17 @@ import {
     LabelImportantOutlined,
 } from '@mui/icons-material';
 
+// Time formats
+import ReactTimeAgo from 'react-time-ago'
+
 // nav
 import { useGameContext } from '../contexts/GameContext';
 
-export default function GameListItem({ date, id, homeTeam, awayTeam}) {
-    const { changeNavValue, getGameId } = useGameContext();
+export default function GameListItem({ date, id, homeTeam, awayTeam }) {
+    const { changeNavValue, getGameId, getGame } = useGameContext();
     const handleEditButton = () => {
         getGameId(id);
-        console.log("Open vote window for game with id: " + id);
+        getGame(id);
         changeNavValue("Vote");
     };
 
@@ -32,25 +35,26 @@ export default function GameListItem({ date, id, homeTeam, awayTeam}) {
         <List
             sx={{ width: '100%', bgcolor: 'background.paper' }}
         >
-        <ListItem
-                            secondaryAction={
-                                <>
-                                    <IconButton onClick={handleEditButton} edge="end" aria-label="edit">
-                                        <Edit sx={{ color: 'green' }}/>
-                                    </IconButton>
-                                </>
-                            }
-        >
-            <ListItemButton disableRipple>
+            <ListItem
+                secondaryAction={
+                    <>
+                        <IconButton onClick={handleEditButton} edge="end" aria-label="edit">
+                            <Edit sx={{ color: 'green' }} />
+                        </IconButton>
+                    </>
+                }
+            >
+                <ListItemButton disableRipple>
                     <ListItemIcon>
                         <LabelImportantOutlined />
                     </ListItemIcon>
                     <ListItemText
-                        primary={homeTeam + " vs. "+ awayTeam}
+                        primary={homeTeam + " vs. " + awayTeam}
                         secondary={date}
                     />
-            </ListItemButton>
-        </ListItem>
+                    <ReactTimeAgo date={date} />
+                </ListItemButton>
+            </ListItem>
         </List>
     );
 };
