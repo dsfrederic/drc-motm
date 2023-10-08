@@ -24,6 +24,10 @@ import {
 
 export default function GameList() {
     const { games } = useGameContext();
+
+    console.log("GameList: games: ", games);
+    console.log("GameList: games[0]: ", games[0]);
+
     return (
         <Box sx={{ pb: 7 }}>
             <CssBaseline />
@@ -35,8 +39,8 @@ export default function GameList() {
                             key={i}
                             id={id}
                             date={eventDate}
-                            // homeTeam={homeTeam}
-                            // awayTeam={awayTeam}
+                            homeTeam={homeTeam.data.attributes.displayName}
+                            awayTeam={awayTeam.data.attributes.displayName}
                         />
                     ))
                 }
