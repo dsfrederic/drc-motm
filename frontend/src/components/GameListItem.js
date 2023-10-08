@@ -24,10 +24,9 @@ import ReactTimeAgo from 'react-time-ago'
 import { useGameContext } from '../contexts/GameContext';
 
 export default function GameListItem({ date, id, homeTeam, awayTeam }) {
-    const { changeNavValue, getGameId, getGame } = useGameContext();
+    const { changeNavValue, getGameId } = useGameContext();
     const handleEditButton = () => {
         getGameId(id);
-        getGame(id);
         changeNavValue("Vote");
     };
 

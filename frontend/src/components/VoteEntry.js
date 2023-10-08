@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import http from '../http';
+
 // mui components
 import {
     Typography,
@@ -21,13 +23,15 @@ import { useGameContext } from '../contexts/GameContext';
 
 
 export default function VoteEntry() {
+    const [loading, setLoading] = useState(true);
+
     // input data
     const [name, setName] = useState("");
     const [runnerUp, setRunnerUp] = useState("");
     const [playerOfTheMatch, setPlayerOfTheMatch] = useState("");
 
     // edit req
-    const { gameId, game, getGame } = useGameContext();
+    const { gameId, setGame } = useGameContext();
     const data = JSON.stringify({
         "data": {
             "name": name,
@@ -36,17 +40,38 @@ export default function VoteEntry() {
         }
     });
 
+    useEffect(()=>{
+        const readGameDetails = async () => {
+            const response = await http.get("/api/games/" + gameId + "?populate[awayTeam][fields][0]=displayName&populate[homeTeam][fields][0]=displayName&populate[homeLineup][populate][player01][fields][0]=firstName&populate[homeLineup][populate][player01][fields][1]=lastName&populate[homeLineup][populate][player02][fields][0]=firstName&populate[homeLineup][populate][player02][fields][1]=lastName&populate[homeLineup][populate][player03][fields][0]=firstName&populate[homeLineup][populate][player03][fields][1]=lastName&populate[homeLineup][populate][player04][fields][0]=firstName&populate[homeLineup][populate][player04][fields][1]=lastName&populate[homeLineup][populate][player05][fields][0]=firstName&populate[homeLineup][populate][player05][fields][1]=lastName&populate[homeLineup][populate][player06][fields][0]=firstName&populate[homeLineup][populate][player06][fields][1]=lastName&populate[homeLineup][populate][player07][fields][0]=firstName&populate[homeLineup][populate][player07][fields][1]=lastName&populate[homeLineup][populate][player08][fields][0]=firstName&populate[homeLineup][populate][player08][fields][1]=lastName&populate[homeLineup][populate][player09][fields][0]=firstName&populate[homeLineup][populate][player09][fields][1]=lastName&populate[homeLineup][populate][player10][fields][0]=firstName&populate[homeLineup][populate][player10][fields][1]=lastName&populate[homeLineup][populate][player11][fields][0]=firstName&populate[homeLineup][populate][player11][fields][1]=lastName&populate[homeLineup][populate][player12][fields][0]=firstName&populate[homeLineup][populate][player12][fields][1]=lastName&populate[homeLineup][populate][player13][fields][0]=firstName&populate[homeLineup][populate][player13][fields][1]=lastName&populate[homeLineup][populate][player14][fields][0]=firstName&populate[homeLineup][populate][player14][fields][1]=lastName&populate[homeLineup][populate][player15][fields][0]=firstName&populate[homeLineup][populate][player15][fields][1]=lastName&populate[homeLineup][populate][player16][fields][0]=firstName&populate[homeLineup][populate][player16][fields][1]=lastName&populate[homeLineup][populate][player17][fields][0]=firstName&populate[homeLineup][populate][player17][fields][1]=lastName&populate[homeLineup][populate][player18][fields][0]=firstName&populate[homeLineup][populate][player18][fields][1]=lastName&populate[homeLineup][populate][player19][fields][0]=firstName&populate[homeLineup][populate][player19][fields][1]=lastName&populate[homeLineup][populate][player20][fields][0]=firstName&populate[homeLineup][populate][player20][fields][1]=lastName&populate[homeLineup][populate][player21][fields][0]=firstName&populate[homeLineup][populate][player21][fields][1]=lastName&populate[homeLineup][populate][player22][fields][0]=firstName&populate[homeLineup][populate][player22][fields][1]=lastName&populate[homeLineup][populate][player23][fields][0]=firstName&populate[homeLineup][populate][player23][fields][1]=lastName&populate[homeLineup][populate][player24][fields][0]=firstName&populate[homeLineup][populate][player24][fields][1]=lastName&populate[awayLineup][populate][player01][fields][0]=firstName&populate[awayLineup][populate][player01][fields][1]=lastName&populate[awayLineup][populate][player02][fields][0]=firstName&populate[awayLineup][populate][player02][fields][1]=lastName&populate[awayLineup][populate][player03][fields][0]=firstName&populate[awayLineup][populate][player03][fields][1]=lastName&populate[awayLineup][populate][player04][fields][0]=firstName&populate[awayLineup][populate][player04][fields][1]=lastName&populate[awayLineup][populate][player05][fields][0]=firstName&populate[awayLineup][populate][player05][fields][1]=lastName&populate[awayLineup][populate][player06][fields][0]=firstName&populate[awayLineup][populate][player06][fields][1]=lastName&populate[awayLineup][populate][player07][fields][0]=firstName&populate[awayLineup][populate][player07][fields][1]=lastName&populate[awayLineup][populate][player08][fields][0]=firstName&populate[awayLineup][populate][player08][fields][1]=lastName&populate[awayLineup][populate][player09][fields][0]=firstName&populate[awayLineup][populate][player09][fields][1]=lastName&populate[awayLineup][populate][player10][fields][0]=firstName&populate[awayLineup][populate][player10][fields][1]=lastName&populate[awayLineup][populate][player11][fields][0]=firstName&populate[awayLineup][populate][player11][fields][1]=lastName&populate[awayLineup][populate][player12][fields][0]=firstName&populate[awayLineup][populate][player12][fields][1]=lastName&populate[awayLineup][populate][player13][fields][0]=firstName&populate[awayLineup][populate][player13][fields][1]=lastName&populate[awayLineup][populate][player14][fields][0]=firstName&populate[awayLineup][populate][player14][fields][1]=lastName&populate[awayLineup][populate][player15][fields][0]=firstName&populate[awayLineup][populate][player15][fields][1]=lastName&populate[awayLineup][populate][player16][fields][0]=firstName&populate[awayLineup][populate][player16][fields][1]=lastName&populate[awayLineup][populate][player17][fields][0]=firstName&populate[awayLineup][populate][player17][fields][1]=lastName&populate[awayLineup][populate][player18][fields][0]=firstName&populate[awayLineup][populate][player18][fields][1]=lastName&populate[awayLineup][populate][player19][fields][0]=firstName&populate[awayLineup][populate][player19][fields][1]=lastName&populate[awayLineup][populate][player20][fields][0]=firstName&populate[awayLineup][populate][player20][fields][1]=lastName&populate[awayLineup][populate][player21][fields][0]=firstName&populate[awayLineup][populate][player21][fields][1]=lastName&populate[awayLineup][populate][player22][fields][0]=firstName&populate[awayLineup][populate][player22][fields][1]=lastName&populate[awayLineup][populate][player23][fields][0]=firstName&populate[awayLineup][populate][player23][fields][1]=lastName&populate[awayLineup][populate][player24][fields][0]=firstName&populate[awayLineup][populate][player24][fields][1]=lastName");
+            const responseArr = Object(response.data.data.attributes);
+            console.log("test");
+            console.log(responseArr);
+            setGame(responseArr);
+            setLoading(false);
+        };
+        return readGameDetails;
+    }, [setGame, gameId]);
+
     const submitVote = () => {
         // updateGame(gameId, data);
         console.log("SUBMIT VOTE");  
     };
 
-    console.log(gameId)
-    console.log(game)
+
+
+    const {game} = useGameContext();
+
+    // console.log(gameId)
+    // console.log(game)
+    // console.log(game.homeLineup)
     // console.log(game.homeLineup.id)
     // console.log(game.homeLineup.player01)
     // console.log(game.homeLineup.player01.data.id)
     // console.log(game.homeLineup.player01.data.attributes.firstName)
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+
     return (
         <Box
             component="form"
@@ -72,7 +97,7 @@ export default function VoteEntry() {
                         label="Player of the match"
                     onChange={(e) => setPlayerOfTheMatch(e.target.value)}
                     >
-                        <MenuItem value={10}>{game.eventDate}</MenuItem>
+                        <MenuItem value={10}>{game.homeLineup.player01.data.attributes.firstName}</MenuItem>
                         <MenuItem value={10}>{gameId}</MenuItem>
                 
                     </Select>
