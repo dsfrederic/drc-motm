@@ -727,6 +727,8 @@ export interface ApiGameGame extends Schema.CollectionType {
     >;
     homeLineup: Attribute.Component<'team-components.lineup'>;
     awayLineup: Attribute.Component<'team-components.lineup'>;
+    enableHomeTeamVote: Attribute.Boolean & Attribute.DefaultTo<false>;
+    enableAwayTeamVote: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
