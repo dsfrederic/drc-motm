@@ -5,11 +5,11 @@ import string
 
 inputs = [
     {
-        "file_name": "./games/240325-ROCvsDRC.txt",
+        "file_name": "DRCI.txt",
         "form_name": "240325 - ROC vs DRC"  
     },
     {
-        "file_name": "./games/240325-ROCIIvsDRCII.txt",
+        "file_name": "DRCII.txt",
         "form_name": "240325 - ROCII vs DRCII"  
     }
 ]
